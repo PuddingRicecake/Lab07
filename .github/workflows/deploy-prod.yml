@@ -20,11 +20,11 @@ jobs:
           source: "./html/*"
           target: "/var/www/html"
           strip_components: 1
-      - name: set the ubuntu user as the owner of the /var/www/html directory for ubuntu 24+
+      - name: set the root user back as the owner of the /var/www/html directory for ubuntu 24+
         uses: actions/checkout@v1.2.0
         with:
           host: ${{secrets.PROD_HOST}}
           username: ${{secrets.SSH_USER_NAME}}
           key: ${{secrets.SSH_KEY}}
           script: |
-            sudo chown -R ubuntu /var/www/html
+            sudo chown -R root /var/www/html
